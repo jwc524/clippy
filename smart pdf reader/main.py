@@ -1,7 +1,7 @@
 import pdfreader
 from pdfreader import PDFDocument, SimplePDFViewer
 
-file_name = "Desktop/smart pdf reader/example.pdf"
+file_name = "example.pdf"
 
 fd =  open(file_name, "rb")
 viewer = SimplePDFViewer(fd)
