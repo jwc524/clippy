@@ -1,4 +1,4 @@
-
+# to open document with GUI
 import os
 from tkinter import *
 from tkinter import filedialog
@@ -26,6 +26,22 @@ Button(root, text="open", command=browseFiles, width=40,
        font="arial 20", bd=4).pack()
 root.mainloop()
 
+
+
+# To open document and print all the headings
+import password as password
+from pdfminer.pdfparser import PDFParser
+from pdfminer.pdfdocument import PDFDocument
+
+# Open a PDF document.
+fp = open('BURT.pdf', 'rb')
+parser = PDFParser(fp)
+document = PDFDocument(parser, password)
+
+# Get the outlines of the document.
+outlines = document.get_outlines()
+for (level,title,dest,a,se) in outlines:
+    print (level, title)
 
 
   #ORIGINAL
