@@ -2,7 +2,7 @@
 import os
 from tkinter import *
 from tkinter import filedialog
-from tkPDFViewer import tkPDFViewer as pdf
+from tkPDFViewer import tkPDFViewer as pdf # change version to 1.18.17
 
 root = Tk()
 root.geometry("630x700+400+100")
