@@ -40,8 +40,8 @@ document = PDFDocument(parser, password)
 
 # Get the outlines of the document.
 outlines = document.get_outlines()
-for (level,title,dest,a,se) in outlines:
-    print (level, title)
+for (level, title, dest, a, se) in outlines:
+    print(level, title)
 
 
   #ORIGINAL
