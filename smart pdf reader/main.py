@@ -12,6 +12,7 @@ root.title("PDF viewer")
 root.configure(bg="white")
 
 window = tk.Tk()
+window.title("Headings")
 
 heading = []
 
