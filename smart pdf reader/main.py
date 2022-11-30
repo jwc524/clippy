@@ -38,7 +38,7 @@ document = PDFDocument(parser)
 
 # Get the outlines of the document.
 outlines = document.get_outlines()
-for (level, title, dest, a, se) in outlines:
+for (_, title, _, _, _) in outlines:
     heading.append(title)
 
 
