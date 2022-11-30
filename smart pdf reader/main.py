@@ -1,13 +1,19 @@
-# to open document with GUI
 import os
 from tkinter import *
 from tkinter import filedialog
-from tkPDFViewer import tkPDFViewer as pdf # change version to 1.18.17
+import tkinter as tk
+from tkPDFViewer import tkPDFViewer as pdf  # change version to 1.18.17
+from pdfminer.pdfparser import PDFParser
+from pdfminer.pdfdocument import PDFDocument
 
 root = Tk()
 root.geometry("630x700+400+100")
 root.title("PDF viewer")
 root.configure(bg="white")
+
+window = tk.Tk()
+
+heading = []
 
 
 def browseFiles():
@@ -20,47 +26,35 @@ def browseFiles():
     v1 = pdf.ShowPdf()
     v2 = v1.pdf_view(root, pdf_location=open(filename, "r"), width=77, height=100)
     v2.pack(pady=(0, 0))
+    return filename
 
 
-Button(root, text="open", command=browseFiles, width=40,
-       font="arial 20", bd=4).pack()
-root.mainloop()
+file = browseFiles()
 
-
-
-# To open document and print all the headings
-import password as password
-from pdfminer.pdfparser import PDFParser
-from pdfminer.pdfdocument import PDFDocument
-
-# Open a PDF document.
-fp = open('BURT.pdf', 'rb')
+fp = open(file, 'rb')
 parser = PDFParser(fp)
-document = PDFDocument(parser, password)
+document = PDFDocument(parser)
 
 # Get the outlines of the document.
 outlines = document.get_outlines()
 for (level, title, dest, a, se) in outlines:
-    print(title)
+    heading.append(title)
 
 
-  #ORIGINAL
-# import pdfreader
-# from pdfreader import PDFDocument, SimplePDFViewer
+def clicked():
+    top_window = tk.Toplevel(window)
+    for ind, fruit in enumerate(heading):
+        names_label = tk.Label(top_window)
+        names_label.grid(row=int(ind) + 1, column=0)
+        names_label.config(text=fruit)
 
-# file_name = "example.pdf"
 
-# fd =  open(file_name, "rb")
-# viewer = SimplePDFViewer(fd)
+btn = tk.Button(window, text="Print Headings", command=clicked)
+btn.grid(column=0, row=0, padx=30, pady=2)
 
-# for canvas in viewer:
-#     page_img = canvas.images
-#     page_forms = canvas.forms
-#     page_txt = canvas.text_content
-#     page_inline_img = canvas.inline_images
-#     page_strings = canvas.strings
+Button(root, text="open", command=browseFiles, width=40,
+       font="arial 20", bd=4).pack()
 
-# viewer.navigate(1)
-# viewer.render()
-# print(viewer.canvas.strings)
-# ##viewer.canvas.text_content
+root.mainloop()
+
+# Open a PDF document.
