@@ -44,10 +44,10 @@ for (_, title, _, _, _) in outlines:
 
 def clicked():
     top_window = tk.Toplevel(window)
-    for ind, fruit in enumerate(heading):
+    for ind, h in enumerate(heading):
         names_label = tk.Label(top_window)
         names_label.grid(row=int(ind) + 1, column=0)
-        names_label.config(text=fruit)
+        names_label.config(text=h)
 
 
 btn = tk.Button(window, text="Print Headings", command=clicked)
