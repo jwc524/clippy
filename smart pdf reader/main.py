@@ -8,6 +8,9 @@ from tkPDFViewer import tkPDFViewer as pdf  # change version to 1.18.17
 from pdfminer.pdfparser import PDFParser
 from pdfminer.pdfdocument import PDFDocument
 
+#summarizer.py
+from summarizer import summarize
+
 root = Tk()
 root.geometry("630x700+400+100")
 root.title("PDF viewer")
@@ -72,5 +75,8 @@ btn.grid(column=0, row=0, padx=30, pady=2)
 
 Button(root, text="open", command=browseFiles, width=40,
        font="arial 20", bd=4).pack()
+
+#SHOULD print out summary
+print(summarize(filename))
 
 root.mainloop()
