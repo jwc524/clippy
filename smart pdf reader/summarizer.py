@@ -58,5 +58,5 @@ def common_words(text):
 
     return freq_tabl
 
-print(summarize(extracted_text))
-print(common_words(extracted_text))
+#print(summarize(extracted_text))
+#print(common_words(extracted_text))
