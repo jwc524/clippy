@@ -44,7 +44,9 @@ outlines = document.get_outlines()
 for (_, title, _, _, _) in outlines:
     heading.append(title)
 
-# creates a page where headings are location
+# creates a page where headings are located
+# will then be used to use as a place where the user
+# can click on the heading and use to click on it
 pdf = fpdf.FPDF(format='letter')
 pdf.add_page()
 pdf.set_font("Arial", size=12)
