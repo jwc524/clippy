@@ -2,6 +2,8 @@ import os
 from tkinter import *
 from tkinter import filedialog
 import tkinter as tk
+
+import fpdf
 from tkPDFViewer import tkPDFViewer as pdf  # change version to 1.18.17
 from pdfminer.pdfparser import PDFParser
 from pdfminer.pdfdocument import PDFDocument
@@ -27,6 +29,7 @@ def browseFiles():
     v1 = pdf.ShowPdf()
     v2 = v1.pdf_view(root, pdf_location=open(filename, "r"), width=77, height=100)
     v2.pack(pady=(0, 0))
+
     return filename
 
 
@@ -40,6 +43,18 @@ document = PDFDocument(parser)
 outlines = document.get_outlines()
 for (_, title, _, _, _) in outlines:
     heading.append(title)
+
+# creates a page where headings are location
+pdf = fpdf.FPDF(format='letter')
+pdf.add_page()
+pdf.set_font("Arial", size=12)
+
+for i in heading:
+    pdf.write(5, str(i))
+    pdf.ln()
+pdf.output("heading.pdf")
+
+# need to merge the two pdfs together
 
 
 def clicked():
@@ -57,5 +72,3 @@ Button(root, text="open", command=browseFiles, width=40,
        font="arial 20", bd=4).pack()
 
 root.mainloop()
-
-# Open a PDF document.
