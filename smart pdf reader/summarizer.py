@@ -3,44 +3,44 @@ import pdfplumber
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize, sent_tokenize
 
-#needs to be turned into a def
-
 #replace 'example.pdf' with name of another file
 with pdfplumber.open(r'example.pdf') as pdf:
     extracted_page = pdf.pages[0]
     extracted_text = extracted_page.extract_text()
 
-#turn line 13 to 46 into methods
-stopwords = set(stopwords.words("english"))
-words = word_tokenize(extracted_text)
-frequency_table = dict()
-for word in words:
-    word = word.lower()
-    if word in stopwords:
-        continue
-    if word in frequency_table:
-        frequency_table[word] += 1
-    else:
-        frequency_table[word] = 1
+def summarize(text):
+    stopword = set(stopwords.words("english"))                   # Removes stopwords (a, the, and, in, etc.)
+    words = word_tokenize(extracted_text)                         # Word tokenizer for tokenizing
+    freq_tabl = dict()                                            # Frequency table uses dictionary to track most commonly used words excluding all stopwords
+    for word in words:                                            
+        word = word.lower()
+        if word in stopword:
+            continue
+        if word in freq_tabl:
+            freq_tabl[word] += 1
+        else:
+            freq_tabl[word] = 1
 
-sentences = sent_tokenize(extracted_text)
-sentence_value = dict()
-for sentence in sentences:
-    for word, freq in frequency_table.items():
-        if word in sentence.lower():
-            if sentence in sentence_value:
-                sentence_value[sentence] += freq
-            else:
-                sentence_value[sentence] = freq
+    sentences = sent_tokenize(extracted_text)                     # Functions like word tokenizer, but now applies for full sentences
+    sent_tabl = dict()                                            # Similar to frequency table
+    for sentence in sentences:
+        for word, freq in freq_tabl.items():
+            if word in sentence.lower():
+                if sentence in sent_tabl:
+                    sent_tabl[sentence] += freq
+                else:
+                    sent_tabl[sentence] = freq
 
-sum_value = 0
-for sentence in sentence_value:
-    sum_value += sentence_value[sentence]
+    sum = 0                                                       # This and the following for loop are used to score sentences based on a perceived
+    for sentence in sent_tabl:                                    # importance that comes from how frequently the words in the sentence pops up elsewhere
+        sum += sent_tabl[sentence]
 
-average = int(sum_value/len(sentence_value))
-summary = ''
-for sentence in sentences:
-    if (sentence in sentence_value) and (sentence_value[sentence] > (1.2 * average)):
-        summary += " " + sentence
+    average = int(sum / len(sent_tabl))                             # Average score of a sentence is used to determine what is used in the summary
+    summary = ''
+    for sentence in sentences:
+        if (sentence in sent_tabl) and (sent_tabl[sentence] > (1.2 * average)):
+            summary += " " + sentence
+    
+    return summary
 
-print(summary)
+print(summarize(extracted_text))
