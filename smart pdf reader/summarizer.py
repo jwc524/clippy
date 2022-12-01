@@ -10,7 +10,7 @@ with pdfplumber.open(r'example.pdf') as pdf:
 
 def summarize(text):
     stopword = set(stopwords.words("english"))                   # Removes stopwords (a, the, and, in, etc.)
-    words = word_tokenize(extracted_text)                         # Word tokenizer for tokenizing
+    words = word_tokenize(text)                         # Word tokenizer for tokenizing
     freq_tabl = dict()                                            # Frequency table uses dictionary to track most commonly used words excluding all stopwords
     for word in words:                                            
         word = word.lower()
@@ -21,7 +21,7 @@ def summarize(text):
         else:
             freq_tabl[word] = 1
 
-    sentences = sent_tokenize(extracted_text)                     # Functions like word tokenizer, but now applies for full sentences
+    sentences = sent_tokenize(text)                     # Functions like word tokenizer, but now applies for full sentences
     sent_tabl = dict()                                            # Similar to frequency table
     for sentence in sentences:
         for word, freq in freq_tabl.items():
