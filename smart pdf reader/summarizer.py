@@ -43,4 +43,20 @@ def summarize(text):
     
     return summary
 
+def common_words(text):
+    stopword = set(stopwords.words("english"))                    # Basically that first section of 'summarize'
+    words = word_tokenize(text)                                   # Now used to return the most common words used in text  
+    freq_tabl = dict()                                            
+    for word in words:                                            
+        word = word.lower()
+        if word in stopword:
+            continue
+        if word in freq_tabl:
+            freq_tabl[word] += 1
+        else:
+            freq_tabl[word] = 1
+
+    return freq_tabl
+
 print(summarize(extracted_text))
+print(common_words(extracted_text))
