@@ -120,6 +120,9 @@ pdf_writer.addLink(pagenum=0, pagedest=4, rect=RectangleObject([20, 540, 200, 61
 # References
 pdf_writer.addLink(pagenum=0, pagedest=5, rect=RectangleObject([20, 520, 200, 538]), )
 
+# Figure One
+pdf_writer.addLink(pagenum=1, pagedest=2, rect=RectangleObject([407, 194, 417, 205]), )
+
 with open(os.path.abspath('new_file_1.pdf'), 'wb') as link_pdf:
     pdf_writer.write(link_pdf)
 
