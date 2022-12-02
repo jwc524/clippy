@@ -13,14 +13,25 @@ from pdfminer.pdfdocument import PDFDocument
 
 # creating up popup windows
 root = Tk()
-root.geometry("630x700+400+100")
+w1 = 800
+h = 650
+
+ws = root.winfo_screenwidth()
+hs = root.winfo_screenheight()
+
+x = (ws/2) - (w1/2)
+y = (hs/2) - (h/2)
+
+root.geometry('%dx%d+%d+%d' % (w1, h, x, y))
 root.title("PDF viewer")
 root.configure(bg="white")
 
 window = tk.Tk()
+window.geometry('150x50+300+215')
 window.title("Headings")
 
 w = tk.Tk()
+w.geometry('120x50+1500+215')
 w.title("Merge")
 
 heading = []
@@ -154,7 +165,7 @@ def links():
 btn = tk.Button(window, text="Print Headings", command=clicked)
 btn.grid(column=0, row=0, padx=30, pady=2)
 
-mg = tk.Button(w, text='Merge', command=two_merged)
+mg = tk.Button(w, text='Merge Files', command=two_merged)
 mg.grid(column=0, row=0, padx=30, pady=2)
 
 
