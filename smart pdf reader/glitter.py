@@ -11,6 +11,7 @@ from tkPDFViewer import tkPDFViewer as pdf  # change version to 1.18.17
 from pdfminer.pdfparser import PDFParser
 from pdfminer.pdfdocument import PDFDocument
 
+# creating up popup windows
 root = Tk()
 root.geometry("630x700+400+100")
 root.title("PDF viewer")
@@ -19,9 +20,13 @@ root.configure(bg="white")
 window = tk.Tk()
 window.title("Headings")
 
+w = tk.Tk()
+w.title("Merge")
+
 heading = []
 
 
+#  browsing files through local directories to open files
 def browseFiles():
     filename = filedialog.askopenfilename(initialdir=os.getcwd(),
                                           title="select pdf file",
@@ -36,8 +41,19 @@ def browseFiles():
     return filename
 
 
+def browseFiles_two():
+    filename = filedialog.askopenfilename(initialdir=os.getcwd(),
+                                          title="select pdf file",
+                                          filetypes=(("PDF File", ".pdf"),
+                                                     ("PDF File", ".PDF"),
+                                                     ("All file", ".txt")))
+    return filename
+
+
+# stores the file selected into a variable
 file = browseFiles()
 
+# obtaining the table of contents to the file selected
 fp = open(file, 'rb')
 parser = PDFParser(fp)
 document = PDFDocument(parser)
@@ -47,31 +63,30 @@ outlines = document.get_outlines()
 for (_, title, _, _, _) in outlines:
     heading.append(title)
 
-# creates a page where headings are location
-pdf = fpdf.FPDF(format='letter')
-pdf.add_page()
-pdf.set_font("Arial", size=15)
+# creates a page where headings are located
+pdf_1 = fpdf.FPDF(format='letter')
+pdf_1.add_page()
+pdf_1.set_font("Arial", size=15)
 
+# prints the heading on a new pdf
 for i in heading:
-    pdf.write(5, str(i))
-    pdf.ln()
-pdf.output("heading.pdf")
+    pdf_1.write(5, str(i))
+    pdf_1.ln()
+pdf_1.output("heading.pdf")
 
 
-# need to merge the two pdfs together
+# merging two pdfs together
 def PDFmerge(pdfs, output):
-    # creating pdf file merger object
     pdfMerger = PyPDF2.PdfFileMerger()
 
-    # appending pdfs one by one
     for pdf in pdfs:
         pdfMerger.append(pdf)
 
-    # writing combined pdf to output pdf file
     with open(output, 'wb') as f:
         pdfMerger.write(f)
 
 
+# when user clicks for the heading, a new pdf is created
 def new_page():
     pdfs = ['heading.pdf', file]
 
@@ -82,6 +97,16 @@ def new_page():
     PDFmerge(pdfs=pdfs, output=output)
 
 
+# merging two different types of pdfs
+def two_merged():
+    file_2 = browseFiles_two()
+    pdfs = [file, file_2]
+    output = 'pdfs_updated.pdf'
+    PDFmerge(pdfs=pdfs, output=output)
+    subprocess.Popen(['pdfs_updated.pdf'], shell=True)
+
+
+# what happens when heading is clicked
 def clicked():
     top_window = tk.Toplevel(window)
     for ind, h in enumerate(heading):
@@ -91,6 +116,7 @@ def clicked():
     subprocess.Popen(['links.pdf'], shell=True)
 
 
+# how users are able to click on certain parts of the selected pdf
 def links():
     pdf_writer = PdfFileWriter()
     pdf_reader = PdfFileReader(open('merged.pdf', 'rb'))
@@ -124,8 +150,12 @@ def links():
         pdf_writer.write(link_pdf)
 
 
+# creating the buttons
 btn = tk.Button(window, text="Print Headings", command=clicked)
 btn.grid(column=0, row=0, padx=30, pady=2)
+
+mg = tk.Button(w, text='Merge', command=two_merged)
+mg.grid(column=0, row=0, padx=30, pady=2)
 
 
 def main():
