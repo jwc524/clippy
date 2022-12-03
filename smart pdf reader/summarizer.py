@@ -2,7 +2,10 @@ import os
 import pdfplumber
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize, sent_tokenize
-from string import punctuation 
+from string import punctuation
+from sklearn.datasets import fetch_20newsgroups
+from sklearn.naive_bayes import MultinomialNB
+from sklearn.feature_extraction.text import TfidfTransformer, CountVectorizer
 
 #replace 'example.pdf' with name of another file
 with pdfplumber.open(r'example.pdf') as pdf:
@@ -112,3 +115,4 @@ def get_genre(text):
 #print("\nCommon words:")
 #print(common_words(extracted_text))
 #print(punctuation)
+get_genre(extracted_text)
