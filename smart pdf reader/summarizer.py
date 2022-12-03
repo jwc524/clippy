@@ -68,6 +68,44 @@ def common_words(text):
 
     #return freq_tabl
 
+def get_genre(text):
+    genres = {
+        'alt.atheism': 'Atheism',
+        'comp.graphics': 'Computer Graphics',
+        'comp.os.ms-windows.misc': 'Microsoft Windows',
+        'comp.sys.ibm.pc.hardware': 'PC Hardware',
+        'comp.sys.mac.hardware': 'Mac Hardware',
+        'misc.forsale': 'Commericial/Promotion',
+        'rec.autos': 'Automobiles',
+        'rec.sport.baseball': 'Baseball',
+        'rec.sport.hockey': 'Hockey',
+        'sci.crypt': 'Cryptocurrency or Cryptozoology',
+        'sci.electronics': 'Electronics',
+        'sci.med': 'Medicine',
+        'sci.space': 'Space',
+        'soc.religion.christian': 'Christianity',
+        'talk.politics.guns': 'Gun Laws',
+        'talk.politics.mideast': 'Mideast Conflict',
+        'talk.politics.misc': 'Politics',
+        'talk.religion.misc': 'Religion'
+    }
+    trainer = fetch_20newsgroups(subset = 'train', categories = genres.keys())
+
+    count_vect = CountVectorizer()
+    train_cv = count_vect.fit_transform(trainer.data)
+    tfidf = TfidfTransformer()
+    input_data = [text]
+    train_tf = tfidf.fit_transform(train_cv)
+    mnb_classifier = MultinomialNB().fit(train_tf, trainer.target)
+    input_cv = count_vect.transform(input_data)
+    input_tf = tfidf.transform(input_cv)
+    prediction = mnb_classifier.predict(input_tf)
+    
+    for x, category in zip(input_data, prediction):
+        print('\nPredicted category:', \
+            genres[trainer.target_names[category]])
+
+
 #print(extracted_text)
 #print("\n     Summary:")
 #print(summarize(extracted_text))
