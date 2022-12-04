@@ -88,7 +88,7 @@ def open_files():
         v2.pack(pady=(0, 0))
 
     main_file = file_dir()
-    upload_file(main_file, pdf_window, 330, 550)
+    upload_file(main_file, pdf_window, 77, 100)
 
     # parses through the pdf to find all the headings, appends it to list, then prints it on a new PDF
     def find_headings():
@@ -172,11 +172,11 @@ def open_files():
     def rotate_pdf(file, location, rotation):
         pdf_file = open(file, 'rb')
 
-        pdf_reader = PyPDF2.PdfFileReader(main_file)
+        pdf_reader = PyPDF2.PdfFileReader(pdf_file)
         pdf_writer = PyPDF2.PdfFileWriter()
 
         for page in range(pdf_reader.numPages):
-            page_num = pdf_writer.getPage(page)
+            page_num = pdf_reader.getPage(page)
             page_num.rotateClockwise(rotation)
 
             pdf_writer.addPage(page_num)
@@ -215,6 +215,8 @@ def open_files():
         # Abstract to Question for Detection
         pdf_writer.addLink(pagenum=0, pagedest=1, rect=RectangleObject([20, 715, 200, 765]), )
 
+        pdf_writer.addLink(pagenum=0, pagedest=1, rect=RectangleObject([100, 100, 100, 100]), )
+
         # Search for Answer to Nodejs Glitter Data
         pdf_writer.addLink(pagenum=0, pagedest=2, rect=RectangleObject([20, 655, 200, 713]), )
 
@@ -243,10 +245,10 @@ def open_files():
     rotate_button = tkinter.Button(rotate, text='Rotate', command=upload_rotation)
     rotate_button.grid(column=0, row=0, padx=40, pady=10)
 
-    increase_zoom = tkinter.Button(resize_window, text='Zoom In (+)', command=lambda: resize('increase'))
+    increase_zoom = tkinter.Button(resize_window, text='Zoom In(+)', command=lambda: resize('increase'))
     increase_zoom.grid(column=0, row=0, padx=50, pady=10)
 
-    decrease_zoom = tkinter.Button(resize_window, text='Zoom Out (-)', command=lambda: resize('decrease'))
+    decrease_zoom = tkinter.Button(resize_window, text='Zoom Out(-)', command=lambda: resize('decrease'))
     decrease_zoom.grid(column=0, row=1, padx=50, pady=10)
 
     # destroying the main window will close our application, instead we minimize it
