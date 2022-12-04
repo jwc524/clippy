@@ -166,10 +166,10 @@ def open_files():
         pdf_writer = PyPDF2.PdfFileWriter()
 
         for page in range(pdf_reader.numPages):
-            pageObj = pdf_writer.getPage(page)
-            pageObj.rotateClockwise(rotation)
+            page_num = pdf_writer.getPage(page)
+            page_num.rotateClockwise(rotation)
 
-            pdf_writer.addPage(pageObj)
+            pdf_writer.addPage(page_num)
 
         updated_file = open(location, 'wb')
         pdf_writer.write(updated_file)
