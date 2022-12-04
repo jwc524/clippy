@@ -6,6 +6,8 @@ from string import punctuation
 from sklearn.datasets import fetch_20newsgroups
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.feature_extraction.text import TfidfTransformer, CountVectorizer
+from nltk.probability import FreqDist
+import matplotlib.pyplot as plt
 
 #replace 'example.pdf' with name of another file
 with pdfplumber.open(r'example.pdf') as pdf:
@@ -52,24 +54,35 @@ def summarize(text):
     return summary
 
 def common_words(text):
-    stopword = set(stopwords.words("english"))                    # Basically that first section of 'summarize'
-    words = word_tokenize(text)                                   # Now used to return the most common words used in text  
-    freq_tabl = dict()                                            
-    for word in words:                                            
+    stopword = set(stopwords.words('english'))              # Will display the 15 most commonly used terms in the file
+    words = word_tokenize(text)
+    filtered = []
+    for word in words:
         word = word.lower()
         if word in stopword:
             continue
         if word in punctuation:
             continue
-        if word in freq_tabl:
-            freq_tabl[word] += 1
         else:
-            freq_tabl[word] = 1
+            filtered.append(word)
+    fd = FreqDist(filtered)
+    return fd.most_common(15)
 
-    sorted_tabl = dict(sorted(freq_tabl.items(), key = lambda item: item[1], reverse = True))
-    return sorted_tabl
-
-    #return freq_tabl
+def common_words_graph(text):                               # Same as above, but this one will show a fancy graph
+    stopword = set(stopwords.words('english'))
+    words = word_tokenize(text)
+    filtered = []
+    for word in words:
+        word = word.lower()
+        if word in stopword:
+            continue
+        if word in punctuation:
+            continue
+        else:
+            filtered.append(word)
+    fd = FreqDist(filtered)
+    fd.plot(15, cumulative = False)
+    plt.show()
 
 def get_genre(text):
     genres = {
@@ -116,3 +129,4 @@ def get_genre(text):
 #print(common_words(extracted_text))
 #print(punctuation)
 get_genre(extracted_text)
+common_words_graph(extracted_text)
