@@ -80,9 +80,11 @@ def common_words_graph(text):                               # Same as above, but
             continue
         else:
             filtered.append(word)
+    fig = plt.figure(figsize = (7, 5))
+    plt.gcf().subplots_adjust(bottom = 0.15)
     fd = FreqDist(filtered)
-    fd.plot(15, cumulative = False)
-    plt.show()
+    fd.plot(15, title = 'Commonly Used Terms', cumulative = False)
+    fig.savefig('sdr_g.pdf', bbox_inches = 'tight')
 
 def get_genre(text):
     genres = {
