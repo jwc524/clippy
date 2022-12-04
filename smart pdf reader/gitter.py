@@ -1,5 +1,6 @@
 # change PyMuPDF to version 1.18.17
 import os
+import subprocess
 from tkinter import *
 from tkinter import filedialog
 import tkinter
@@ -147,6 +148,8 @@ def open_files():
 
         upload_file(location, updated_pdf, 77, 100)
 
+        subprocess.Popen([location], shell=True)
+
         # updating the tkinter window
         pdf_window.destroy()
         updated_pdf.mainloop()
@@ -154,6 +157,7 @@ def open_files():
     # creating a small window where headings are upload for a greater user experience
     def print_heading():
         find_headings()
+
         top_window = tkinter.Toplevel(headings)
         top_window.geometry('+225+335')
         for ind, h in enumerate(heading_list):
@@ -163,6 +167,9 @@ def open_files():
 
         output = pdf_heading(main_file)
         upload_file(output, updated_pdf, 77, 100)
+
+        links()
+        subprocess.Popen(['heading_links.pdf'], shell=True)
 
         # updating the tkinter window
         pdf_window.destroy()
@@ -226,7 +233,7 @@ def open_files():
         # Figure One
         pdf_writer.addLink(pagenum=1, pagedest=2, rect=RectangleObject([407, 194, 417, 205]), )
 
-        with open(os.path.abspath('heading_links.pdf'), 'wb') as link_pdf:
+        with open(os.path.abspath('heading_links.pdf.'), 'wb') as link_pdf:
             pdf_writer.write(link_pdf)
 
     # giving the user full control in what they want to do with selected PDFs
