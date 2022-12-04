@@ -31,13 +31,17 @@ main_window.title("PDF Viewer")
 
 # the start of the application
 def open_files():
-    # all windows created and aligned
+    # all pdf windows created and aligned
     pdf_window = tkinter.Toplevel()
     align_center(pdf_window, 800, 650)
 
     updated_pdf = tkinter.Toplevel()
     align_center(updated_pdf, 800, 650)
 
+    summary_pdf = tkinter.Toplevel()
+    align_center(summary_pdf, 800, 650)
+
+    # all button windows created and aligned
     headings = tkinter.Toplevel()
     headings.geometry('150x50+300+215')
     headings.title("Headings")
@@ -53,6 +57,10 @@ def open_files():
     resize_window = tkinter.Toplevel()
     resize_window.geometry('150x100+300+765')
     resize_window.title('Resizing')
+
+    summary = tkinter.Toplevel()
+    summary.geometry('250x100+830+50')
+    summary.title('Summarization')
 
     heading_list = []
 
@@ -198,11 +206,14 @@ def open_files():
     rotate_button = tkinter.Button(rotate, text='Rotate', command=upload_rotation)
     rotate_button.grid(column=0, row=0, padx=40, pady=10)
 
-    increase_zoom = tkinter.Button(resize_window, text='zoom++', command=lambda: resize('increase'))
-    increase_zoom.grid(column=0, row=0, padx=50, pady=10)
+    increase_zoom = tkinter.Button(resize_window, text='Zoom In(+)', command=lambda: resize('increase'))
+    increase_zoom.grid(column=0, row=0, padx=30, pady=10)
 
-    decrease_zoom = tkinter.Button(resize_window, text='zoom++', command=lambda: resize('decrease'))
-    decrease_zoom.grid(column=0, row=1, padx=50, pady=10)
+    decrease_zoom = tkinter.Button(resize_window, text='Zoom Out(-)', command=lambda: resize('decrease'))
+    decrease_zoom.grid(column=0, row=1, padx=30, pady=10)
+
+    summary_button = tkinter.Button(summary, text='Summary', command=lambda: resize('decrease'))
+    summary_button.grid(column=0, row=1, padx=90, pady=30)
 
     # destroying the main window will close our application, instead we minimize it
     main_window.iconify()
