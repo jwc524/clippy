@@ -145,6 +145,7 @@ def open_files():
     def print_heading():
         find_headings()
         top_window = tkinter.Toplevel(headings)
+        top_window.geometry('+225+335')
         for ind, h in enumerate(heading_list):
             names_label = tkinter.Label(top_window)
             names_label.grid(row=int(ind) + 1, column=0)
