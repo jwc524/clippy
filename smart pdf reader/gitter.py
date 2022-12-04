@@ -215,23 +215,28 @@ def open_files():
             current_page = pdf_reader.getPage(page)
             pdf_writer.addPage(current_page)
 
-        # Abstract to Question for Detection
-        pdf_writer.addLink(pagenum=0, pagedest=1, rect=RectangleObject([20, 715, 200, 765]), )
+        def heading_links():
+            # Abstract to Question for Detection
+            pdf_writer.addLink(pagenum=0, pagedest=1, rect=RectangleObject([20, 715, 200, 765]), )
 
-        # Search for Answer to Nodejs Glitter Data
-        pdf_writer.addLink(pagenum=0, pagedest=2, rect=RectangleObject([20, 655, 200, 713]), )
+            # Search for Answer to Nodejs Glitter Data
+            pdf_writer.addLink(pagenum=0, pagedest=2, rect=RectangleObject([20, 655, 200, 713]), )
 
-        # Classifier to Results
-        pdf_writer.addLink(pagenum=0, pagedest=3, rect=RectangleObject([20, 615, 200, 653]), )
+            # Classifier to Results
+            pdf_writer.addLink(pagenum=0, pagedest=3, rect=RectangleObject([20, 615, 200, 653]), )
 
-        # Related Works to Conclusion and Future Work
-        pdf_writer.addLink(pagenum=0, pagedest=4, rect=RectangleObject([20, 540, 200, 613]), )
+            # Related Works to Conclusion and Future Work
+            pdf_writer.addLink(pagenum=0, pagedest=4, rect=RectangleObject([20, 540, 200, 613]), )
 
-        # References
-        pdf_writer.addLink(pagenum=0, pagedest=5, rect=RectangleObject([20, 520, 200, 538]), )
+            # References
+            pdf_writer.addLink(pagenum=0, pagedest=5, rect=RectangleObject([20, 520, 200, 538]), )
 
-        # Figure One
-        pdf_writer.addLink(pagenum=1, pagedest=2, rect=RectangleObject([407, 194, 417, 205]), )
+        def figure_links():
+            # Figure One
+            pdf_writer.addLink(pagenum=1, pagedest=2, rect=RectangleObject([407, 194, 417, 205]), )
+
+        heading_links()
+        figure_links()
 
         with open(os.path.abspath('heading_links.pdf.'), 'wb') as link_pdf:
             pdf_writer.write(link_pdf)
