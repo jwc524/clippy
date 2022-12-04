@@ -162,11 +162,11 @@ def open_files():
     def rotate_pdf(file, location, rotation):
         pdf_file = open(file, 'rb')
 
-        pdf_reader = PyPDF2.PdfFileReader(main_file)
+        pdf_reader = PyPDF2.PdfFileReader(pdf_file)
         pdf_writer = PyPDF2.PdfFileWriter()
 
         for page in range(pdf_reader.numPages):
-            page_num = pdf_writer.getPage(page)
+            page_num = pdf_reader.getPage(page)
             page_num.rotateClockwise(rotation)
 
             pdf_writer.addPage(page_num)
