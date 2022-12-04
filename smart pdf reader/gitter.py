@@ -88,7 +88,7 @@ def open_files():
         v2.pack(pady=(0, 0))
 
     main_file = file_dir()
-    upload_file(main_file, pdf_window, 77, 100)
+    upload_file(main_file, pdf_window, 330, 550)
 
     # parses through the pdf to find all the headings, appends it to list, then prints it on a new PDF
     def find_headings():
@@ -243,10 +243,10 @@ def open_files():
     rotate_button = tkinter.Button(rotate, text='Rotate', command=upload_rotation)
     rotate_button.grid(column=0, row=0, padx=40, pady=10)
 
-    increase_zoom = tkinter.Button(resize_window, text='zoom++', command=lambda: resize('increase'))
+    increase_zoom = tkinter.Button(resize_window, text='Zoom In (+)', command=lambda: resize('increase'))
     increase_zoom.grid(column=0, row=0, padx=50, pady=10)
 
-    decrease_zoom = tkinter.Button(resize_window, text='zoom++', command=lambda: resize('decrease'))
+    decrease_zoom = tkinter.Button(resize_window, text='Zoom Out (-)', command=lambda: resize('decrease'))
     decrease_zoom.grid(column=0, row=1, padx=50, pady=10)
 
     # destroying the main window will close our application, instead we minimize it
