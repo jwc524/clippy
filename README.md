@@ -14,7 +14,7 @@
     <span><a href=#reader>Reader 📚</a></span>&emsp;
 </div>
 
-<h2 id="about">about.clippy</h3>
+<h2 id="about">About 📖</h3>
 
 > Clippy takes a PDF and displays its contents, a summary, and its headings with a straightforward user interface.
 > The summaries are generated using tokenization, count vectorization, TF-IDF, and Multinomial NB classification.
@@ -33,6 +33,7 @@
     <li><a href=https://pypi.org/project/PyPDF2/ target="_blank" rel="noopener noreferrer" >pypdf2</li>
     <li><a href=https://pypi.org/project/sklearn/ target="_blank" rel="noopener noreferrer" >sklearn</li>
     <li><a href=https://pypi.org/project/ssl/>ssl</li>
+    <li><a href=https://docs.python.org/3/library/textwrap.html>textwrap</li>
     <li><a href=https://docs.python.org/3/library/tkinter.html/ target="_blank" rel="noopener noreferrer"/>tkinter/ttk</li>
     <li><a href=https://pypi.org/project/tkPDFViewer/ target="_blank" rel="noopener noreferrer">tkpdfviewer</li>
   </ul>
