@@ -28,7 +28,7 @@ else:
 nltk.download('stopwords')
 
 
-def convert_pdf_to_string(file_path):
+def get_extracted_text(file_path):
     output_string = StringIO()
 
     with open(file_path, 'rb') as in_file:
@@ -42,27 +42,10 @@ def convert_pdf_to_string(file_path):
 
     return output_string.getvalue()
 
-
 file_path = r'../pdfs/BURT.pdf'  # !
-extracted_text = convert_pdf_to_string(file_path)
+extracted_text = get_extracted_text(file_path)
 
-sections = {}
-
-# Splits extracted text into paragraphs
-paragraphs = extracted_text.split('\n\n')
-
-sentences = list()
-for paragraph in paragraphs:
-    sentences = sent_tokenize(paragraph)
-
-    for sentence in sentences:
-        sentence = sentence.replace('\n', ' ')  # Removes line breaks
-        sentence = sentence.replace('- ', '')   # Removes end-of-line breaks
-
-        sentences.append(sentence)
-
-
-def summarize(text, sentences):
+def summarize(text):
     summary = ''
     stopword = set(
         stopwords.words("english"))  # Removes stopwords (a, the, and, in, etc.); separate one for puncuation also
@@ -78,6 +61,22 @@ def summarize(text, sentences):
             freq_tabl[word] += 1
         else:
             freq_tabl[word] = 1
+
+    paragraphs = text.split('\n\n')
+
+    temp = list()
+    for paragraph in paragraphs:
+        sentences = sent_tokenize(paragraph)
+
+        for sentence in sentences:
+            temp.append(sentence)
+
+    sentences = list()
+    for sentence in temp:
+        sentence = sentence.replace('\n', ' ')  # Removes line breaks
+        sentence = sentence.replace('- ', '')  # Removes end-of-line breaks
+
+        sentences.append(sentence)
 
     sent_tabl = dict()  # Gives a sentence a score based on the combined scores of words
 
@@ -98,7 +97,7 @@ def summarize(text, sentences):
     average = int(sum / len(sent_tabl))  # Gets average sentence score
     for sentence in sentences:  # Determines what will be put into the summary; above average = more importance
         if (sentence in sent_tabl) and (sent_tabl[sentence] > (
-                1.465 * average)):  # Changing the value multiplied to average will narrow down the summary
+                5 * average)):  # Changing the value multiplied to average will narrow down the summary
             summary += " " + sentence
 
     return summary
@@ -179,7 +178,7 @@ def get_genre(text):
 
 # print(extracted_text)
 print("\n     Summary:")
-print(summarize(extracted_text, sentences))
+print(summarize(extracted_text))
 # print("\nCommon words:")
 # print(common_words(extracted_text))
 # print(punctuation)
