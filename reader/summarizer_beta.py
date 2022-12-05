@@ -29,7 +29,7 @@ else:
 
 nltk.download('stopwords')
 
-
+# Extracts text from PDF using PDFMiner, accounts for column separation
 def get_extracted_text(path):
     output_string = StringIO()
 
@@ -62,8 +62,10 @@ def summarize(text):
         else:
             freq_tabl[word] = 1
 
+    # Splits extracted text into paragraphs by using double line breaks as a regex
     paragraphs = text.split("\n\n")
 
+    # Cleans up sentences by removing line breaks, broken-line words
     sentences = []
     for paragraph in paragraphs:
         paragraph = paragraph.replace("\n", " ")
@@ -98,6 +100,7 @@ def summarize(text):
 
             summary += "\n" + sentence
 
+    # Returns summary as wrapped text for visual cleanliness
     return "\n".join(textwrap.wrap(summary, width=127))
 
 
@@ -171,6 +174,7 @@ def get_genre(text):  # Uses 20 Newsgroup dataset and Multinomial NB to predict
 def get_summary(path):
     text = get_extracted_text(path)
 
+    # Generates and saves common words graph
     common_words_graph(text)
 
     summary = list()
@@ -178,10 +182,3 @@ def get_summary(path):
     summary.append(summarize(text))
 
     return summary
-
-
-file_path = '../pdfs/BURT.pdf'
-summary = get_summary(file_path)
-
-for item in summary:
-    print(item)
