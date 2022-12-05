@@ -46,24 +46,9 @@ def open_files():
 
     # all button windows created and aligned
     buttons = tkinter.Toplevel()
-    buttons.geometry('250x350+300+215')
-    buttons.title("Headings")
+    buttons.geometry('250x300+300+215')
 
     heading_list = []
-
-    # lets the user resize the given window
-    def resize(c):
-        global width, height
-        if c == 'increase':
-            width = width + 20
-            height = height + 20
-        elif c == 'decrease':
-            width = width - 20
-            height = height - 20
-
-        d = str(width) + 'x' + str(height)
-        # pdf_window.geometry(d)
-        updated_pdf.geometry(d)
 
     # allows users to select the file that they want to read: PDFs and TXT files
     def file_dir():
@@ -177,6 +162,20 @@ def open_files():
 
         pdf_window.destroy()
         updated_pdf.mainloop()
+
+    # lets the user resize the given window
+    def resize(c):
+        global width, height
+        if c == 'increase':
+            width = width + 20
+            height = height + 20
+        elif c == 'decrease':
+            width = width - 20
+            height = height - 20
+
+        d = str(width) + 'x' + str(height)
+        # pdf_window.geometry(d)
+        updated_pdf.geometry(d)
 
     # gets the summary of the select PDF
     def print_summary():
