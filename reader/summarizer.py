@@ -100,8 +100,8 @@ def common_words_graph(text):                               # Same as above, but
 
 def get_genre(text):                                        # Uses 20 Newsgroup dataset and Multinomial NB to predict
     genres = {                                              # a genre for the PDF file
-        'alt.atheism': 'Atheism',
-        'comp.graphics': 'Computer Graphics',
+        'alt.atheism': 'Atheism',                           # Will print the predicted genre and the percentage of confidence
+        'comp.graphics': 'Computer Graphics',               # in that prediction
         'comp.os.ms-windows.misc': 'Microsoft Windows',
         'comp.sys.ibm.pc.hardware': 'PC Hardware',
         'comp.sys.mac.hardware': 'Mac Hardware',
@@ -134,6 +134,11 @@ def get_genre(text):                                        # Uses 20 Newsgroup 
     for x, category in zip(input_data, prediction):
         print('\nPredicted category:',
             genres[trainer.target_names[category]])
+      
+    prob = mnb_classifier.predict_proba(input_tf)
+    cat = int(prediction[0])
+    value = round(prob.item(cat), 4) * 100
+    print('Confidence:', value, '%')
 
 
 # print(extracted_text)
