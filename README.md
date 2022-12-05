@@ -27,7 +27,7 @@
     <li><a href=https://pypi.org/project/fpdf/ target="_blank" rel="noopener noreferrer" >fpdf</li>
     <li><a href=https://pypi.org/project/matplotlib/ target="_blank" rel="noopener noreferrer" >matplotlib</li>
     <li><a href=https://pypi.org/project/nltk/ target="_blank" rel="noopener noreferrer" >nltk</li>
-    <li><a href=https://pypi.org/project/pdfplumber/0.1.2/ target="_blank" rel="noopener noreferrer" >pdfplumber</li>
+    <li><a href=https://github.com/jsvine/pdfplumber/ target="_blank" rel="noopener noreferrer" >pdfplumber</li>
     <li><a href=https://pypi.org/project/pdfminer/ target="_blank" rel="noopener noreferrer" >pdfminer</li>
     <li><a href=https://pypi.org/project/PyMuPDF target="_blank" rel="noopener noreferrer" >pymupdf (requires 1.18.17)</li>
     <li><a href=https://pypi.org/project/PyPDF2/ target="_blank" rel="noopener noreferrer" >pypdf2</li>
