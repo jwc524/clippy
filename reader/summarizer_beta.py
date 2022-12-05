@@ -170,7 +170,7 @@ def get_genre(text):  # Uses 20 Newsgroup dataset and Multinomial NB to predict
 
 
 # Returns category prediction, confidence score, and summary in a list.
-# [0] = prediction and score, [1] = summary
+# [0][0] = prediction, [0][1] = score, [1] = summary
 def get_summary(path):
     text = get_extracted_text(path)
 
@@ -182,3 +182,16 @@ def get_summary(path):
     summary.append(summarize(text))
 
     return summary
+
+"""
+# EXAMPLE USAGE
+
+from summarizer_beta import get_summary
+
+path = '../pdfs/BURT.pdf'
+summary_contents = get_summary(path)
+genre = summary_contents[0][0]
+score = summary_contents[0][1]
+summary = summary_contents[1]
+
+"""
