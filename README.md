@@ -5,13 +5,13 @@
 
 <div>
   <h2 id="#contents">Table of Contents</h2>
-    <span><a href=#quickstart>Quickstart ⏩&emsp;</a></span>
-    <span><a href=#about>About 📖&emsp;</a></span>
-    <span><a href=#dependencies>Dependencies 📦&emsp;</a></span>
-    <span><a href=#installation>Installation ⚙️&emsp;</a></span>
-    <span><a href=#features>Features 🪴&emsp;</a></span>
-    <span><a href=#provided-pdfs>Provided PDFs ✉️&emsp;</a></span>  
-    <span><a href=#reader>Reader 📚&emsp;</a></span>
+    <span><a href=#quickstart>Quickstart ⏩</a></span>&emsp;
+    <span><a href=#about>About 📖</a></span>&emsp;
+    <span><a href=#dependencies>Dependencies 📦</a></span>&emsp;
+    <span><a href=#installation>Installation ⚙️</a></span>&emsp;
+    <span><a href=#features>Features 🪴</a></span>&emsp;
+    <span><a href=#provided-pdfs>Provided PDFs ✉️</a></span>&emsp;
+    <span><a href=#reader>Reader 📚</a></span>&emsp;
 </div>
 
 <h2 id="about">about.clippy</h3>
