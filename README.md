@@ -33,6 +33,7 @@
     <li><a href=https://pypi.org/project/PyPDF2/ target="_blank" rel="noopener noreferrer" >pypdf2</li>
     <li><a href=https://pypi.org/project/sklearn/ target="_blank" rel="noopener noreferrer" >sklearn</li>
     <li><a href=https://pypi.org/project/ssl/>ssl</li>
+    <li><a href=https://docs.python.org/3/library/textwrap.html>textwrap</li>
     <li><a href=https://docs.python.org/3/library/tkinter.html/ target="_blank" rel="noopener noreferrer"/>tkinter/ttk</li>
     <li><a href=https://pypi.org/project/tkPDFViewer/ target="_blank" rel="noopener noreferrer">tkpdfviewer</li>
   </ul>
