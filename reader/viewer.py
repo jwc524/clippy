@@ -1,7 +1,5 @@
 import os
 
-from pdfminer.pdfparser import PDFParser
-from pdfminer.pdfdocument import PDFDocument
 from PyPDF2 import PdfReader
 import tkinter as tk
 from tkinter import ttk

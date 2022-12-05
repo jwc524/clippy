@@ -1,5 +1,7 @@
 import os
 import pdfplumber
+import nltk
+import ssl
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize, sent_tokenize
 from string import punctuation
@@ -9,8 +11,17 @@ from sklearn.feature_extraction.text import TfidfTransformer, CountVectorizer
 from nltk.probability import FreqDist
 import matplotlib.pyplot as plt
 
+try:
+    _create_unverified_https_context = ssl._create_unverified_context
+except AttributeError:
+    pass
+else:
+    ssl._create_default_https_context = _create_unverified_https_context
+
+nltk.download('stopwords')
+
 #replace 'example.pdf' with name of another file
-with pdfplumber.open(r'example.pdf') as pdf:
+with pdfplumber.open(r'../pdfs/BURT.pdf') as pdf:
     extracted_page = pdf.pages[0]
     extracted_text = extracted_page.extract_text(x_tolerance = 1)      # x_tolerance is default to 3; changing to one removes tendency for it to group together
                                                                        # multiple words due to a new line
@@ -30,8 +41,9 @@ def summarize(text):
         else:
             freq_tabl[word] = 1
 
-    sentences = sent_tokenize(text)                               
+    sentences = sent_tokenize(text)
     sent_tabl = dict()                                            # Gives a sentence a score based on the combined scores of words
+
     for sentence in sentences:                                    # Will also account for anytime a word/part of a word shows up in another sentence
         for word, freq in freq_tabl.items():
             if word in punctuation:
@@ -48,8 +60,8 @@ def summarize(text):
 
     average = int(sum / len(sent_tabl))                                              # Gets average sentence score
     for sentence in sentences:                                                       # Determines what will be put into the summary; above average = more importance
-        if (sentence in sent_tabl) and (sent_tabl[sentence] > (1.4625 * average)):   # Changing the value multiplied to average will narrow down the summary
-            summary += " " + sentence                                                
+        if (sentence in sent_tabl) and (sent_tabl[sentence] > (2.2 * average)):   # Changing the value multiplied to average will narrow down the summary
+            summary += " " + sentence
     
     return summary
 
@@ -120,15 +132,15 @@ def get_genre(text):
     prediction = mnb_classifier.predict(input_tf)
     
     for x, category in zip(input_data, prediction):
-        print('\nPredicted category:', \
+        print('\nPredicted category:',
             genres[trainer.target_names[category]])
 
 
-#print(extracted_text)
-#print("\n     Summary:")
-#print(summarize(extracted_text))
-#print("\nCommon words:")
-#print(common_words(extracted_text))
-#print(punctuation)
+# print(extracted_text)
+print("\n     Summary:")
+print(summarize(extracted_text))
+# print("\nCommon words:")
+# print(common_words(extracted_text))
+# print(punctuation)
 get_genre(extracted_text)
 common_words_graph(extracted_text)
