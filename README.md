@@ -30,7 +30,7 @@
   <li><a href=https://pypi.org/project/nltk/ target="_blank" rel="noopener noreferrer" >nltk</li>
   <li><a href=https://github.com/jsvine/pdfplumber/ target="_blank" rel="noopener noreferrer" >pdfplumber</li>
   <li><a href=https://pypi.org/project/pdfminer/ target="_blank" rel="noopener noreferrer" >pdfminer</li>
-  <li><a href=https://pypi.org/project/PyMuPDF target="_blank" rel="noopener noreferrer" >pymupdf (requires 1.18.17)</li>
+  <li><a href=https://pypi.org/project/PyMuPDF target="_blank" rel="noopener noreferrer" >pymupdf (requires version 1.18.17)</li>
   <li><a href=https://pypi.org/project/PyPDF2/ target="_blank" rel="noopener noreferrer" >pypdf2</li>
   <li><a href=https://pypi.org/project/sklearn/ target="_blank" rel="noopener noreferrer" >sklearn</li>
   <li><a href=https://pypi.org/project/ssl/>ssl</li>
@@ -40,8 +40,10 @@
 </ul>
 
 <h2 id=installation>Installation ⚙️ </h4>
-<p>Installing these dependencies generally follows this format:</p>
-
+<p>To install each dependency, use the following structure</p>
+```
+pip install <package>
+```
 - basic functionality
 - how to use
 
