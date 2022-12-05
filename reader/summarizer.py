@@ -29,6 +29,7 @@ else:
 
 nltk.download('stopwords')
 
+
 # Extracts text from PDF using PDFMiner, accounts for column separation
 def get_extracted_text(path):
     output_string = StringIO()
@@ -89,11 +90,11 @@ def summarize(text):
                 else:
                     sent_tabl[sentence] = freq
 
-    sum = 0  # Sum = total added up sentence scores
+    sums = 0  # Sum = total added up sentence scores
     for sentence in sent_tabl:
-        sum += sent_tabl[sentence]
+        sums += sent_tabl[sentence]
 
-    average = int(sum / len(sent_tabl))  # Gets average sentence score
+    average = int(sums / len(sent_tabl))  # Gets average sentence score
     for sentence in sentences:  # Determines what will be put into the summary; above average = more importance
         if (sentence in sent_tabl) and (sent_tabl[sentence] > (
                 3 * average)):  # Changing the value multiplied to average will narrow down the summary
@@ -160,7 +161,6 @@ def get_genre(text):  # Uses 20 Newsgroup dataset and Multinomial NB to predict
     for x, category in zip(input_data, prediction):
         predicted_category = 'Predicted Category: {}'.format(genres[trainer.target_names[category]])
 
-
     prob = mnb_classifier.predict_proba(input_tf)
     cat = int(prediction[0])
     value = round(prob.item(cat), 4) * 100
@@ -175,24 +175,9 @@ def get_summary(path):
     text = get_extracted_text(path)
 
     # Generates and saves common words graph
-    common_words_graph(text)
 
     summary = list()
     summary.append(get_genre(text))
     summary.append(summarize(text))
 
     return summary
-
-
-"""
-# EXAMPLE USAGE
-
-from summarizer_beta import get_summary
-
-path = '../pdfs/BURT.pdf'
-summary_contents = get_summary(path)
-genre = summary_contents[0][0]
-score = summary_contents[0][1]
-summary = summary_contents[1]
-
-"""
