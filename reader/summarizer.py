@@ -98,8 +98,8 @@ def common_words_graph(text):                               # Same as above, but
     fd.plot(15, title = 'Commonly Used Terms', cumulative = False)
     fig.savefig('sdr_g.pdf', bbox_inches = 'tight')
 
-def get_genre(text):
-    genres = {
+def get_genre(text):                                        # Uses 20 Newsgroup dataset and Multinomial NB to predict
+    genres = {                                              # a genre for the PDF file
         'alt.atheism': 'Atheism',
         'comp.graphics': 'Computer Graphics',
         'comp.os.ms-windows.misc': 'Microsoft Windows',
