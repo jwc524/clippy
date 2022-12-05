@@ -1,11 +1,13 @@
 # change PyMuPDF to version 1.18.17
 import os
-from tkinter import *
-from tkinter import filedialog
-import tkinter
 import PyPDF2
 import fpdf
+
+import tkinter
+from tkinter import *
+from tkinter import filedialog
 from tkPDFViewer import tkPDFViewer
+
 from pdfminer.pdfparser import PDFParser
 from pdfminer.pdfdocument import PDFDocument
 
@@ -43,25 +45,9 @@ def open_files():
     align_center(updated_pdf, 800, 650)
 
     # all button windows created and aligned
-    headings = tkinter.Toplevel()
-    headings.geometry('150x50+300+215')
-    headings.title("Headings")
-
-    merge = tkinter.Toplevel()
-    merge.geometry('120x50+1500+215')
-    merge.title("Merge")
-
-    rotate = tkinter.Toplevel()
-    rotate.geometry('120x50+1500+810')
-    rotate.title("rotate")
-
-    resize_window = tkinter.Toplevel()
-    resize_window.geometry('150x100+300+765')
-    resize_window.title('Resizing')
-
-    summary = tkinter.Toplevel()
-    summary.geometry('250x100+830+50')
-    summary.title('Summarization')
+    buttons = tkinter.Toplevel()
+    buttons.geometry('250x350+300+215')
+    buttons.title("Headings")
 
     heading_list = []
 
@@ -97,18 +83,20 @@ def open_files():
     main_file = file_dir()
     upload_file(main_file, pdf_window, 77, 100)
 
+    # methods for creating pdf files
     def create_pdf(lists, location):
         # creates a new pdf page
         pdf_1 = fpdf.FPDF(format='letter')
         pdf_1.add_page()
-        pdf_1.set_font("Times", size=5)
+        pdf_1.set_font("Times", size=15)
 
-        # prints the heading on a new pdf
+        # prints the list on a new pdf
         for i in lists:
             pdf_1.write(5, str(i))
             pdf_1.ln()
         pdf_1.output(location)
 
+    # method for creating pop-up windows
     def pop_windows(p_window, lists):
         for ind, h in enumerate(lists):
             names_label = tkinter.Label(p_window)
@@ -116,8 +104,8 @@ def open_files():
             names_label.config(text=h)
 
     # parses through the pdf to find all the headings, appends it to list, then prints it on a new PDF
-    def find_headings():
-        fp = open(main_file, 'rb')
+    def find_headings(file):
+        fp = open(file, 'rb')
         parser = PDFParser(fp)
         document = PDFDocument(parser)
 
@@ -138,14 +126,6 @@ def open_files():
         with open(location, 'wb') as write:
             pdfMerger.write(write)
 
-    # merges the heading and selected file together so that users can have a list of all the headings before reading
-    def pdf_heading(file):
-        pdfs = ['heading.pdf', file]
-        location = 'print_heading.pdf'
-        merge_pdf(file=pdfs, location=location)
-
-        return location
-
     # merges two selected PDFs together
     def multiple_pdf():
         second_file = file_dir()
@@ -162,18 +142,11 @@ def open_files():
 
     # creating a small window where headings are upload for a greater user experience
     def print_heading():
-        find_headings()
+        find_headings(main_file)
 
-        top_window = tkinter.Toplevel(headings)
+        top_window = tkinter.Toplevel(buttons)
         top_window.geometry('+225+335')
         pop_windows(top_window, heading_list)
-
-        location = pdf_heading(main_file)
-        upload_file(location, updated_pdf, 77, 100)
-
-        # updating the tkinter window
-        pdf_window.destroy()
-        updated_pdf.mainloop()
 
     # rotates selected PDF 90 degrees every click
     def rotate_pdf(file, location, rotation):
@@ -205,6 +178,7 @@ def open_files():
         pdf_window.destroy()
         updated_pdf.mainloop()
 
+    # gets the summary of the select PDF
     def print_summary():
         path = main_file
         summary_contents = get_summary(path)
@@ -215,7 +189,7 @@ def open_files():
 
         data = [genre, score, p_summary]
 
-        s_window = tkinter.Toplevel(summary)
+        s_window = tkinter.Toplevel(buttons)
         s_window.geometry('+900+100')
         pop_windows(s_window, data)
 
@@ -223,23 +197,12 @@ def open_files():
         common_words_graph(text)
 
     # giving the user full control in what they want to do with selected PDFs
-    head_button = Button(headings, text="Print Headings", command=print_heading)
-    head_button.grid(column=0, row=0, padx=33, pady=10)
-
-    merge_button = tkinter.Button(merge, text='Merge', command=multiple_pdf)
-    merge_button.grid(column=0, row=0, padx=40, pady=10)
-
-    rotate_button = tkinter.Button(rotate, text='Rotate', command=upload_rotation)
-    rotate_button.grid(column=0, row=0, padx=40, pady=10)
-
-    increase_zoom = tkinter.Button(resize_window, text='Zoom In(+)', command=lambda: resize('increase'))
-    increase_zoom.grid(column=0, row=0, padx=30, pady=10)
-
-    decrease_zoom = tkinter.Button(resize_window, text='Zoom Out(-)', command=lambda: resize('decrease'))
-    decrease_zoom.grid(column=0, row=1, padx=30, pady=10)
-
-    summary_button = tkinter.Button(summary, text='Summary', command=print_summary)
-    summary_button.grid(column=0, row=1, padx=90, pady=30)
+    Button(buttons, text="Print Headings", command=print_heading).grid(padx=33, pady=10)
+    Button(buttons, text='Merge', command=multiple_pdf).grid(row=1, padx=40, pady=10)
+    Button(buttons, text='Rotate', command=upload_rotation).grid(row=2, padx=40, pady=10)
+    Button(buttons, text='Zoom In(+)', command=lambda: resize('increase')).grid(row=3, padx=30, pady=10)
+    Button(buttons, text='Zoom Out(-)', command=lambda: resize('decrease')).grid(row=4, padx=30, pady=10)
+    Button(buttons, text='Summary', command=print_summary).grid(row=5, padx=90, pady=10)
 
     # destroying the main window will close our application, instead we minimize it
     main_window.iconify()
