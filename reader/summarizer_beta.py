@@ -30,10 +30,10 @@ else:
 nltk.download('stopwords')
 
 
-def get_extracted_text(file_path):
+def get_extracted_text(path):
     output_string = StringIO()
 
-    with open(file_path, 'rb') as in_file:
+    with open(path, 'rb') as in_file:
         parser = PDFParser(in_file)
         doc = PDFDocument(parser)
         rsrcmgr = PDFResourceManager()
@@ -43,10 +43,6 @@ def get_extracted_text(file_path):
             interpreter.process_page(page)
 
     return output_string.getvalue()
-
-
-file_path = r'../pdfs/BURT.pdf'  # !
-extracted_text = get_extracted_text(file_path)
 
 
 def summarize(text):
@@ -105,23 +101,7 @@ def summarize(text):
     return "\n".join(textwrap.wrap(summary, width=127))
 
 
-def common_words(text):
-    stopword = set(stopwords.words('english'))              # Will display the 15 most commonly used terms in the file
-    words = word_tokenize(text)
-    filtered = []
-    for word in words:
-        word = word.lower()
-        if word in stopword:
-            continue
-        if word in punctuation:
-            continue
-        else:
-            filtered.append(word)
-    fd = FreqDist(filtered)
-    return fd.most_common(15)
-
-
-def common_words_graph(text):                               # Same as above, but this one will show a fancy graph
+def common_words_graph(text):  # Same as above, but this one will show a fancy graph
     stopword = set(stopwords.words('english'))
     words = word_tokenize(text)
     filtered = []
@@ -133,11 +113,11 @@ def common_words_graph(text):                               # Same as above, but
             continue
         else:
             filtered.append(word)
-    fig = plt.figure(figsize = (7, 5))
-    plt.gcf().subplots_adjust(bottom = 0.15)
+    fig = plt.figure(figsize=(7, 5))
+    plt.gcf().subplots_adjust(bottom=0.15)
     fd = FreqDist(filtered)
-    fd.plot(15, title = 'Commonly Used Terms', cumulative = False)
-    fig.savefig('sdr_g.pdf', bbox_inches = 'tight')
+    fd.plot(15, title='Commonly Used Terms', cumulative=False)
+    fig.savefig('sdr_g.pdf', bbox_inches='tight')
 
 
 def get_genre(text):  # Uses 20 Newsgroup dataset and Multinomial NB to predict
@@ -173,21 +153,35 @@ def get_genre(text):  # Uses 20 Newsgroup dataset and Multinomial NB to predict
     input_tf = tfidf.transform(input_cv)
     prediction = mnb_classifier.predict(input_tf)
 
+    predicted_category = ''
     for x, category in zip(input_data, prediction):
-        print('\nPredicted category:',
-              genres[trainer.target_names[category]])
+        predicted_category = 'Predicted Category: {}'.format(genres[trainer.target_names[category]])
+
 
     prob = mnb_classifier.predict_proba(input_tf)
     cat = int(prediction[0])
     value = round(prob.item(cat), 4) * 100
-    print('Confidence:', value, '%')
+    confidence = 'Confidence: {}%'.format(value)
+
+    return [predicted_category, confidence]
 
 
-# print(extracted_text)
-print("\n     Summary:")
-print(summarize(extracted_text))
-# print("\nCommon words:")
-# print(common_words(extracted_text))
-# print(punctuation)
-get_genre(extracted_text)
-common_words_graph(extracted_text)
+# Returns category prediction, confidence score, and summary in a list.
+# [0] = prediction and score, [1] = summary
+def get_summary(path):
+    text = get_extracted_text(path)
+
+    common_words_graph(text)
+
+    summary = list()
+    summary.append(get_genre(text))
+    summary.append(summarize(text))
+
+    return summary
+
+
+file_path = '../pdfs/BURT.pdf'
+summary = get_summary(file_path)
+
+for item in summary:
+    print(item)
