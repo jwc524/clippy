@@ -60,7 +60,7 @@ def summarize(text):
 
     average = int(sum / len(sent_tabl))                                              # Gets average sentence score
     for sentence in sentences:                                                       # Determines what will be put into the summary; above average = more importance
-        if (sentence in sent_tabl) and (sent_tabl[sentence] > (2.2 * average)):   # Changing the value multiplied to average will narrow down the summary
+        if (sentence in sent_tabl) and (sent_tabl[sentence] > (1.465 * average)):   # Changing the value multiplied to average will narrow down the summary
             summary += " " + sentence
     
     return summary
