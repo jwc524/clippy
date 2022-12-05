@@ -10,6 +10,8 @@ from pdfminer.pdfparser import PDFParser
 from pdfminer.pdfdocument import PDFDocument
 
 from summarizer_beta import get_summary
+from summarizer_beta import get_extracted_text
+from summarizer_beta import common_words_graph
 
 width, height = 800, 650
 
@@ -39,10 +41,6 @@ def open_files():
 
     updated_pdf = tkinter.Toplevel()
     align_center(updated_pdf, 800, 650)
-
-    summary_pdf = tkinter.Toplevel()
-    align_center(summary_pdf, 800, 650)
-    summary_pdf.title('Summary')
 
     # all button windows created and aligned
     headings = tkinter.Toplevel()
@@ -78,7 +76,8 @@ def open_files():
             height = height - 20
 
         d = str(width) + 'x' + str(height)
-        pdf_window.geometry(d)
+        # pdf_window.geometry(d)
+        updated_pdf.geometry(d)
 
     # allows users to select the file that they want to read: PDFs and TXT files
     def file_dir():
@@ -209,16 +208,19 @@ def open_files():
     def print_summary():
         path = main_file
         summary_contents = get_summary(path)
+
         genre = summary_contents[0][0]
         score = summary_contents[0][1]
         p_summary = summary_contents[1]
-        space = ""
 
-        data = [genre, space, score]
+        data = [genre, score, p_summary]
 
         s_window = tkinter.Toplevel(summary)
-        s_window.geometry('+500+100')
+        s_window.geometry('+900+100')
         pop_windows(s_window, data)
+
+        text = get_extracted_text(path)
+        common_words_graph(text)
 
     # giving the user full control in what they want to do with selected PDFs
     head_button = Button(headings, text="Print Headings", command=print_heading)
