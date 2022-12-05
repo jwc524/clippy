@@ -24,17 +24,17 @@
 <div>
   <h2 id="#dependencies">Dependencies 📦 </h2>
   <ul>
-    <li><a href=https://pypi.org/project/fpdf/>fpdf</li>
-    <li><a href=https://pypi.org/project/matplotlib/>matplotlib</li>
-    <li><a href=https://pypi.org/project/nltk/>nltk</li>
-    <li><a href=https://pypi.org/project/pdfplumber/0.1.2/>pdfplumber</li>
-    <li><a href=https://pypi.org/project/pdfminer/>pdfminer</li>
-    <li><a href=https://pypi.org/project/PyMuPDF>pymupdf (requires 1.18.17)</li>
-    <li><a href=https://pypi.org/project/PyPDF2/>pypdf2</li>
-    <li><a href=https://pypi.org/project/sklearn/>sklearn</li>
-    <li><a href=https://pypi.org/project/ssl/>ssl</li>
-    <li><a href=https://docs.python.org/3/library/tkinter.html>tkinter/ttk</li>
-    <li><a href=https://pypi.org/project/tkPDFViewer/>tkpdfviewer</li>
+    <li><a target="_blank" rel="noopener noreferrer" href=https://pypi.org/project/fpdf/>fpdf</li>
+    <li><a target="_blank" rel="noopener noreferrer" href=https://pypi.org/project/matplotlib/>matplotlib</li>
+    <li><a target="_blank" rel="noopener noreferrer" href=https://pypi.org/project/nltk/>nltk</li>
+    <li><a target="_blank" rel="noopener noreferrer" href=https://pypi.org/project/pdfplumber/0.1.2/>pdfplumber</li>
+    <li><a target="_blank" rel="noopener noreferrer" href=https://pypi.org/project/pdfminer/>pdfminer</li>
+    <li><a target="_blank" rel="noopener noreferrer" href=https://pypi.org/project/PyMuPDF>pymupdf (requires 1.18.17)</li>
+    <li><a target="_blank" rel="noopener noreferrer" href=https://pypi.org/project/PyPDF2/>pypdf2</li>
+    <li><a target="_blank" rel="noopener noreferrer" href=https://pypi.org/project/sklearn/>sklearn</li>
+    <li><a target="_blank" rel="noopener noreferrer" href=https://pypi.org/project/ssl/>ssl</li>
+    <li><a target="_blank" rel="noopener noreferrer" href=https://docs.python.org/3/library/tkinter.html>tkinter/ttk</li>
+    <li><a target="_blank" rel="noopener noreferrer" href=https://pypi.org/project/tkPDFViewer/>tkpdfviewer</li>
   </ul>
 </div>
 
