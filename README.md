@@ -1,5 +1,5 @@
 <div>
-  <h1>Clippy</h3>
+  <h1>Clippy 🔎 </h3>
   <p>Authors: Ryan Truong, Tony Nguyen, Jonathan Cole</p>
 </div>
 
