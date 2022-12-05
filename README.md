@@ -21,13 +21,13 @@
 > The program also predicts the category of the given text
 > (see [summarizer.py](https://github.com/jwc524/CLIPPY/blob/master/reader/summarizer.py) for more information).
 
-<div>
-  <h2 id="#dependencies">Dependencies 📦 </h2>
+<div id="#dependencies">
+  <h2>Dependencies 📦 </h2>
   <ul>
     <li><a href=https://pypi.org/project/fpdf/ target="_blank" rel="noopener noreferrer" >fpdf</li>
     <li><a href=https://pypi.org/project/matplotlib/ target="_blank" rel="noopener noreferrer" >matplotlib</li>
     <li><a href=https://pypi.org/project/nltk/ target="_blank" rel="noopener noreferrer" >nltk</li>
-    <li><a href=https://pypi.org/project/pdfplumber/0.1.2/ target="_blank" rel="noopener noreferrer" >pdfplumber</li>
+    <li><a href=https://github.com/jsvine/pdfplumber/ target="_blank" rel="noopener noreferrer" >pdfplumber</li>
     <li><a href=https://pypi.org/project/pdfminer/ target="_blank" rel="noopener noreferrer" >pdfminer</li>
     <li><a href=https://pypi.org/project/PyMuPDF target="_blank" rel="noopener noreferrer" >pymupdf (requires 1.18.17)</li>
     <li><a href=https://pypi.org/project/PyPDF2/ target="_blank" rel="noopener noreferrer" >pypdf2</li>
@@ -38,8 +38,8 @@
   </ul>
 </div>
 
-<div>
-  <h2 id="#installation">Installation ⚙️ </h4>
+<div id="#installation">
+  <h2>Installation ⚙️ </h4>
   <p>Installing these dependencies generally follows this format:</p>
 </div>
 
