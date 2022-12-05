@@ -18,6 +18,8 @@ from pdfminer.converter import TextConverter
 from pdfminer.layout import LAParams
 from pdfminer.pdfpage import PDFPage
 
+import textwrap
+
 try:
     _create_unverified_https_context = ssl._create_unverified_context
 except AttributeError:
@@ -42,13 +44,15 @@ def get_extracted_text(file_path):
 
     return output_string.getvalue()
 
+
 file_path = r'../pdfs/BURT.pdf'  # !
 extracted_text = get_extracted_text(file_path)
+
 
 def summarize(text):
     summary = ''
     stopword = set(
-        stopwords.words("english"))  # Removes stopwords (a, the, and, in, etc.); separate one for puncuation also
+        stopwords.words("english"))  # Removes stopwords (a, the, and, in, etc.); separate one for punctuation also
     words = word_tokenize(text)
     freq_tabl = dict()  # Basically counts number of times a word is used in text
     for word in words:
@@ -62,21 +66,18 @@ def summarize(text):
         else:
             freq_tabl[word] = 1
 
-    paragraphs = text.split('\n\n')
+    paragraphs = text.split("\n\n")
 
-    temp = list()
+    sentences = []
     for paragraph in paragraphs:
-        sentences = sent_tokenize(paragraph)
+        paragraph = paragraph.replace("\n", " ")
+        paragraph = paragraph.replace("- ", "")
+        paragraph = paragraph.replace("-\n", "")
 
-        for sentence in sentences:
-            temp.append(sentence)
+        sents = sent_tokenize(paragraph)
 
-    sentences = list()
-    for sentence in temp:
-        sentence = sentence.replace('\n', ' ')  # Removes line breaks
-        sentence = sentence.replace('- ', '')  # Removes end-of-line breaks
-
-        sentences.append(sentence)
+        if len(sents) > 1:
+            sentences += sents
 
     sent_tabl = dict()  # Gives a sentence a score based on the combined scores of words
 
@@ -97,14 +98,15 @@ def summarize(text):
     average = int(sum / len(sent_tabl))  # Gets average sentence score
     for sentence in sentences:  # Determines what will be put into the summary; above average = more importance
         if (sentence in sent_tabl) and (sent_tabl[sentence] > (
-                5 * average)):  # Changing the value multiplied to average will narrow down the summary
-            summary += " " + sentence
+                3 * average)):  # Changing the value multiplied to average will narrow down the summary
 
-    return summary
+            summary += "\n" + sentence
+
+    return "\n".join(textwrap.wrap(summary, width=127))
 
 
 def common_words(text):
-    stopword = set(stopwords.words('english'))  # Will display the 15 most commonly used terms in the file
+    stopword = set(stopwords.words('english'))              # Will display the 15 most commonly used terms in the file
     words = word_tokenize(text)
     filtered = []
     for word in words:
@@ -119,7 +121,7 @@ def common_words(text):
     return fd.most_common(15)
 
 
-def common_words_graph(text):  # Same as above, but this one will show a fancy graph
+def common_words_graph(text):                               # Same as above, but this one will show a fancy graph
     stopword = set(stopwords.words('english'))
     words = word_tokenize(text)
     filtered = []
@@ -131,17 +133,17 @@ def common_words_graph(text):  # Same as above, but this one will show a fancy g
             continue
         else:
             filtered.append(word)
-    fig = plt.figure(figsize=(7, 5))
-    plt.gcf().subplots_adjust(bottom=0.15)
+    fig = plt.figure(figsize = (7, 5))
+    plt.gcf().subplots_adjust(bottom = 0.15)
     fd = FreqDist(filtered)
-    fd.plot(15, title='Commonly Used Terms', cumulative=False)
-    fig.savefig('sdr_g.pdf', bbox_inches='tight')
+    fd.plot(15, title = 'Commonly Used Terms', cumulative = False)
+    fig.savefig('sdr_g.pdf', bbox_inches = 'tight')
 
 
-def get_genre(text):
-    genres = {
-        'alt.atheism': 'Atheism',
-        'comp.graphics': 'Computer Graphics',
+def get_genre(text):  # Uses 20 Newsgroup dataset and Multinomial NB to predict
+    genres = {  # a genre for the PDF file
+        'alt.atheism': 'Atheism',  # Will print the predicted genre and the percentage of confidence
+        'comp.graphics': 'Computer Graphics',  # in that prediction
         'comp.os.ms-windows.misc': 'Microsoft Windows',
         'comp.sys.ibm.pc.hardware': 'PC Hardware',
         'comp.sys.mac.hardware': 'Mac Hardware',
@@ -175,6 +177,11 @@ def get_genre(text):
         print('\nPredicted category:',
               genres[trainer.target_names[category]])
 
+    prob = mnb_classifier.predict_proba(input_tf)
+    cat = int(prediction[0])
+    value = round(prob.item(cat), 4) * 100
+    print('Confidence:', value, '%')
+
 
 # print(extracted_text)
 print("\n     Summary:")
@@ -182,5 +189,5 @@ print(summarize(extracted_text))
 # print("\nCommon words:")
 # print(common_words(extracted_text))
 # print(punctuation)
-# get_genre(extracted_text)
-# common_words_graph(extracted_text)
+get_genre(extracted_text)
+common_words_graph(extracted_text)
