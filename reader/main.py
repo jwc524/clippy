@@ -7,7 +7,7 @@ from tkPDFViewer import tkPDFViewer
 from summarizer import get_summary, get_extracted_text, common_words_graph
 from headings import find_headings
 from merging import merge_pdf
-from rotation import rotate_pdf
+from rotating import rotate_pdf
 
 width, height = 800, 650
 
