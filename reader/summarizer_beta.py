@@ -183,6 +183,7 @@ def get_summary(path):
 
     return summary
 
+
 """
 # EXAMPLE USAGE
 
