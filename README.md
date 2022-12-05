@@ -7,7 +7,7 @@
   <h2 id="#contents">Table of Contents</h2>
     <span><a href=#quickstart>Quickstart ⏩</a></span>&emsp;
     <span><a href=#about>About 📖</a></span>&emsp;
-    <span><a href=#dependencies>Dependencies 📦</a></span>&emsp;
+    <span><a href="#dependencies">Dependencies 📦</a></span>&emsp;
     <span><a href=#installation>Installation ⚙️</a></span>&emsp;
     <span><a href=#features>Features 🪴</a></span>&emsp;
     <span><a href=#provided-pdfs>Provided PDFs ✉️</a></span>&emsp;
