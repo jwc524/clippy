@@ -14,7 +14,7 @@
     <span><a href=#reader>Reader 📚</a></span>&emsp;
 </div>
 
-<h2 id="about">about.clippy</h3>
+<h2 id="about">About 📖</h3>
 
 > Clippy takes a PDF and displays its contents, a summary, and its headings with a straightforward user interface.
 > The summaries are generated using tokenization, count vectorization, TF-IDF, and Multinomial NB classification.
