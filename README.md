@@ -6,9 +6,6 @@
 <span><a href=#how>How It Works 📖</a>&emsp;</span>
 <span><a href=#quickstart>Quickstart ⏩</a>&emsp;</span>
 <span><a href=#dependencies>Dependencies 📦</a>&emsp;</span>
-
-<br>
-
 <span><a href=#installation>Installation ⚙️</a>&emsp;</span>
 <span><a href=#features>Features 🪴</a>&emsp;</span>
 <span><a href=#features>Future Plans 🔮</a>&emsp;</span>
