@@ -150,6 +150,12 @@ Even though this project was created in a limited amount of time, there are some
 **This project was written by Ryan Truong, Tony Nguyen, and Jonathan Cole.**
 
 <br>
+
+<h2  id=warnings>Warning ⚠</h2>
+**It takes a long time for the application to start up for the first time.***
+**Program will not run correctly without the correct version of PyMuPDF***
+
+<br>
 <br>
 
 <sub><b>This project was completed in fulfillment of the requirements of CSC 3400 at Belmont University. Special thank you to Dr. Esteban Parra Rodriguez.</b></sub>
