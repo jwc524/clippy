@@ -89,7 +89,7 @@ pip install pymupdf==1.18.17
 ```
 Alternatively:
 ```
-py-3.10 -m pip install -U pymupdf==1.18.17
+python3 -m pip install -U pymupdf==1.18.17
 ```
 
 <br>
@@ -97,11 +97,22 @@ py-3.10 -m pip install -U pymupdf==1.18.17
 For help with repository cloning, refer to [Quickstart ⏩](#quickstart).
 
 <h2 id=directories>Directories 🗂</h2>
+<h6><a href=https://github.com/jwc524/clippy/tree/master/pdfs>pdfs/</a></h6>
+
+> The **pdfs/** directory contains sample PDFs to use with Clippy.
+
+<h6><a href=https://github.com/jwc524/clippy/tree/master/reader>reader/</a></h6>
+
+> The **reader/** directory contains the main Python scripts for the program.
+
+<h6><a href=https://github.com/jwc524/clippy/tree/master/future>future/</a></h6>
+
+> The **future/** directory contains work-in-progress scripts of upcoming features.
 
 <br>
 
 <h2 id=features>Features 🪴</h3>
-<h6 id=headings>headings.py</h6>
+<h5 id=headings>headings.py</h5>
 
 > **Headings** parses the PDF for its headings and uses the document's outlines if they already exist. Primarily functions as a GUI class.
 
