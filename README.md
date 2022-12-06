@@ -12,6 +12,7 @@
 <span><a href=#features>Features 🪴</a>&ensp;</span>
 <span><a href=#features>Future Plans 🔮</a>&ensp;</span>
 <span><a href=#features>Credits 📜</a>&ensp;</span>
+<span<a href =#features>Warning ⚠</a>&ensp;</span>
 
 
 <br>
