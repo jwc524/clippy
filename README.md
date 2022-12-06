@@ -12,7 +12,7 @@
 <span><a href=#features>Features 🪴</a>&ensp;</span>
 <span><a href=#features>Future Plans 🔮</a>&ensp;</span>
 <span><a href=#features>Credits 📜</a>&ensp;</span>
-<span<a href =#features>Warning ⚠</a>&ensp;</span>
+<span><a href=#warnings>Warnings ⚠ </a>&ensp;</span>
 
 
 <br>
@@ -152,9 +152,8 @@ Even though this project was created in a limited amount of time, there are some
 <br>
 
 <h2  id=warnings>Warning ⚠</h2>
-**It takes a long time for the application to start up for the first time.
-<br>
-Program will not run correctly without the correct version of PyMuPDF**
+<b>It takes a long time for the application to start up for the first time.</b>
+<b>Program will not run correctly without the correct version of PyMuPDF</b>
 
 <br>
 <br>
