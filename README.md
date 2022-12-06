@@ -7,8 +7,8 @@
 <span><a href=#quickstart>Quickstart ⏩</a>&ensp;</span>
 <span><a href=#dependencies>Dependencies 📦</a>&ensp;</span>
 <span><a href=#installation>Installation ⚙️</a>&ensp;</span>
-<span><a href=#features>Features 🪴</a>&ensp;</span>
 <br>
+<span><a href=#features>Features 🪴</a>&ensp;</span>
 <span><a href=#features>Future Plans 🔮</a>&ensp;</span>
 <span><a href=#features>Credits 📜</a>&ensp;</span>
 
