@@ -137,7 +137,7 @@ For help with repository cloning, refer to [Quickstart ⏩](#quickstart).
 <h2 id=future>Future Plans 🔮</h2>
 
 Even though this project was created in a limited amount of time, there are some improvements to be made:
-+ Creating a functional GUI
++ Creating a more responsive, fully-featured GUI
 + Improving the Data Mining Features
 + Implementing more user-friendly features
 + Extracting images and data tables for easy access
