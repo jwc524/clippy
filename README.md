@@ -2,14 +2,16 @@
 
 
 <h2 id="contents">Table of Contents</h2>
-<span><a href=#about>About 💡</a>&ensp;</span>
-<span><a href=#how>How It Works 📖</a>&ensp;</span>
-<span><a href=#quickstart>Quickstart ⏩</a>&ensp;</span>
-<span><a href=#dependencies>Dependencies 📦</a>&ensp;</span>
-<span><a href=#installation>Installation ⚙️</a>&ensp;</span>
-<span><a href=#features>Features 🪴</a>&ensp;</span>
-<span><a href=#features>Future Plans 🔮</a>&ensp;</span>
-<span><a href=#features>Credits 📜</a>&ensp;</span>
+<ul>
+  <li><span><a href=#about>About 💡</a>&ensp;</span></li>
+  <li><span><a href=#how>How It Works 📖</a>&ensp;</span></li>
+  <li><span><a href=#quickstart>Quickstart ⏩</a>&ensp;</span></li>
+  <li><span><a href=#dependencies>Dependencies 📦</a>&ensp;</span></li>
+  <li><span><a href=#installation>Installation ⚙️</a>&ensp;</span></li>
+  <li><span><a href=#features>Features 🪴</a>&ensp;</span></li>
+  <li><span><a href=#features>Future Plans 🔮</a>&ensp;</span></li>
+  <li><span><a href=#features>Credits 📜</a>&ensp;</span></li>
+</ul>
 
 <br>
 <br>
