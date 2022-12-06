@@ -142,6 +142,8 @@ Even though this project was created in a limited amount of time, there are some
 + Implementing more user-friendly features
 + Extracting images and data tables for easy access
 
+<br>
+
 <h2 id=credits>Credits 📜</h2>
 
 **This project was written by Ryan Truong, Tony Nguyen, and Jonathan Cole.**
