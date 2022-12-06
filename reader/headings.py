@@ -31,5 +31,3 @@ def find_headings(file):
         heading_list.append(title)
     create_pdf(heading_list, location='heading.pdf')
     return heading_list
-
-
