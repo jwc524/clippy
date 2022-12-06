@@ -8,6 +8,7 @@
 <span><a href=#dependencies>Dependencies 📦</a>&ensp;</span>
 <span><a href=#installation>Installation ⚙️</a>&ensp;</span>
 <br>
+<span><a href=#directories>Directories 🗂</a>&ensp;</span>
 <span><a href=#features>Features 🪴</a>&ensp;</span>
 <span><a href=#features>Future Plans 🔮</a>&ensp;</span>
 <span><a href=#features>Credits 📜</a>&ensp;</span>
@@ -95,7 +96,11 @@ py-3.10 -m pip install -U pymupdf==1.18.17
 
 For help with repository cloning, refer to [Quickstart ⏩](#quickstart).
 
-<h2 id=features>Features 🪴 </h3>
+<h2 id=directories>Directories 🗂</h2>
+
+<br>
+
+<h2 id=features>Features 🪴</h3>
 <h6 id=headings>headings.py</h6>
 
 > **Headings** parses the PDF for its headings and uses the document's outlines if they already exist. Primarily functions as a GUI class.
