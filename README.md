@@ -76,7 +76,7 @@ gh repo clone jwc524/clippy
 pip install <package>
 ```
 
-However, as mentioned in the [dependencies](#dependencies), pymupdf must be installed as such:
+However, as mentioned in the [dependencies](#dependencies), *pymupdf* must be installed as such:
 
 ```
 pip install pymupdf==1.18.17
