@@ -3,7 +3,7 @@
 
 <h2 id="contents">Table of Contents</h2>
 <span><a href=#about>About 💡</a>&ensp;</span>
-<span><a href=#how>How It Works 📖</a>&emnsp;</span>
+<span><a href=#how>How It Works 📖</a>&ensp;</span>
 <span><a href=#quickstart>Quickstart ⏩</a>&ensp;</span>
 <span><a href=#dependencies>Dependencies 📦</a>&ensp;</span>
 <span><a href=#installation>Installation ⚙️</a>&emnsp;</span>
