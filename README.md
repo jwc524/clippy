@@ -10,7 +10,7 @@
 <br>
 <span><a href=#directories>Directories 🗂</a>&ensp;</span>
 <span><a href=#features>Features 🪴</a>&ensp;</span>
-<span><a href=#future>Future Plans 🔮</a>&ensp;</span>
+<span><a href=#future-plans>Future Plans 🔮</a>&ensp;</span>
 <span><a href=#features>Credits 📜</a>&ensp;</span>
 <span><a href=#warnings>Warnings ⚠ </a>&ensp;</span>
 
@@ -135,7 +135,7 @@ For help with repository cloning, refer to [Quickstart ⏩](#quickstart).
 
 <br>
 
-<h2 id=future>Future Plans 🔮</h2>
+<h2 id=future-plans>Future Plans 🔮</h2>
 
 Even though this project was created in a limited amount of time, there are some improvements to be made:
 + Creating a more responsive, fully-featured GUI
