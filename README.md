@@ -154,7 +154,7 @@ Even though this project was created in a limited amount of time, there are some
 <h2  id=warnings>Warning ⚠</h2>
 <b>It takes a long time for the application to start up for the first time.</b>
 <br>
-<b>Program will not run correctly without the correct version of PyMuPDF</b>
+<b>Program will not run correctly without the correct version of PyMuPDF.</b>
 
 <br>
 <br>
