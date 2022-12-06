@@ -149,5 +149,6 @@ Even though this project was created in a limited amount of time, there are some
 **This project was written by Ryan Truong, Tony Nguyen, and Jonathan Cole.**
 
 <br>
+<br>
 
 <sub>This project was completed in fulfillment of the requirements of CSC 3400 at Belmont University. Special thank you to Dr. Esteban Parra Rodriguez.</sub>
