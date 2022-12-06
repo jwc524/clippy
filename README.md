@@ -151,4 +151,4 @@ Even though this project was created in a limited amount of time, there are some
 <br>
 <br>
 
-<sub>This project was completed in fulfillment of the requirements of CSC 3400 at Belmont University. Special thank you to Dr. Esteban Parra Rodriguez.</sub>
+<sub><b>This project was completed in fulfillment of the requirements of CSC 3400 at Belmont University. Special thank you to Dr. Esteban Parra Rodriguez.</b></sub>
