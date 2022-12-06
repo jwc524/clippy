@@ -4,7 +4,7 @@ import tkinter
 from tkinter import *
 from tkinter import filedialog
 from tkPDFViewer import tkPDFViewer
-from summarizer_beta import get_summary, get_extracted_text, common_words_graph
+from summarizer import get_summary, get_extracted_text, common_words_graph
 from headings import find_headings
 from merging import merge_pdf
 from rotating import rotate_pdf
@@ -111,8 +111,7 @@ def open_files():
             height = height - 20
 
         d = str(width) + 'x' + str(height)
-        # pdf_window.geometry(d)
-        updated_pdf.geometry(d)
+        pdf_window.geometry(d)
 
     # gets the summary of the select PDF
     def print_summary():
