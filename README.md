@@ -10,8 +10,8 @@
     <span><a href=#dependencies>Dependencies 📦</a></span>&emsp;
     <span><a href=#installation>Installation ⚙️</a></span>&emsp;
     <span><a href=#features>Features 🪴</a></span>&emsp;
-    <span><a href=#provided-pdfs>Provided PDFs ✉️</a></span>&emsp;
-    <span><a href=#reader>Reader 📚</a></span>&emsp;
+    <span><a href=#features>Future Plans 🔮</a></span>&emsp;
+    <span><a href=#features>Credits 📜</a></span>&emsp;
 </div>
 
 <br>
@@ -88,16 +88,13 @@ For help with repository cloning, refer to [Quickstart ⏩](#quickstart).
 
 <h2 id=features>Features 🪴 </h3>
 
-<h2 id=provided-pdfs>Provided PDFs ✉️ </h3>
-- what it is
-- how to use it
 
-<h2 id=reader>/reader/</h3>
-- main.py
-- summarizer.py
-- burt.py
-- gitter.py
+<h2 id=future>Future Plans 🔮</h2>
 
+Even though this project was created in a limited amount of time, there are some improvements to be made:
++ Creating a functional GUI
++ Improving the Data Mining Features
++ Implementing more user-friendly features
 
 <h2 id=credits>Credits & Acknowledgements</h2>
 - ryan
