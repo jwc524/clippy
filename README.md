@@ -1,22 +1,25 @@
-<div>
-  <h1>Clippy 🔎 </h3>
-  <p>Authors: Ryan Truong, Tony Nguyen, Jonathan Cole</p>
-</div>
+<h1>Clippy 🔎 </h3>
 
-<div>
-  <h2 id="contents">Table of Contents</h2>
-    <span><a href=#about>About 📖</a></span>&emsp;
-    <span><a href=#quickstart>Quickstart ⏩</a></span>&emsp;
-    <span><a href=#dependencies>Dependencies 📦</a></span>&emsp;
-    <span><a href=#installation>Installation ⚙️</a></span>&emsp;
-    <span><a href=#features>Features 🪴</a></span>&emsp;
-    <span><a href=#features>Future Plans 🔮</a></span>&emsp;
-    <span><a href=#features>Credits 📜</a></span>&emsp;
-</div>
+
+<h2 id="contents">Table of Contents</h2>
+<span><a href=#about>About 💡</a>&emsp;</span>
+<span><a href=#how>How It Works 📖</a>&emsp;</span>
+<span><a href=#quickstart>Quickstart ⏩</a>&emsp;</span>
+<span><a href=#dependencies>Dependencies 📦</a>&emsp;</span>
+<span><a href=#installation>Installation ⚙️</a>&emsp;</span>
+<span><a href=#features>Features 🪴</a>&emsp;</span>
+<span><a href=#features>Future Plans 🔮</a>&emsp;</span>
+<span><a href=#features>Credits 📜</a>&emsp;</span>
 
 <br>
 <br>
-<h2 id=about>About 📖</h3>
+<h2 id=about>About 💡</h2>
+
+> We decided to tackle this project because as college students, most of us will spend much of our time reading an abundance of documents. Using the guidelines, we thought it would be appropriate to create a Smart PDF reader so that when given a pdf or txt file, we are able to use features that help us understand the document to its full effect.
+
+<br>
+
+<h2 id=how>How It Works 📖</h2>
 
 > Clippy takes a PDF and displays its contents, a summary, and its headings with a straightforward user interface.
 > The summaries are generated using tokenization, count vectorization, TF-IDF, and Multinomial NB classification.
@@ -70,7 +73,7 @@ gh repo clone jwc524/clippy
 <br>
 
 <h2 id=installation>Installation ⚙️ </h4>
-<p>To install each dependency, use the following structure</p>
+<p>To install each dependency, use the following structure:</p>
 
 ```
 pip install <package>
@@ -87,7 +90,27 @@ pip install pymupdf==1.18.17
 For help with repository cloning, refer to [Quickstart ⏩](#quickstart).
 
 <h2 id=features>Features 🪴 </h3>
+<h6 id=headings>headings.py</h6>
 
+> **Headings** parses the PDF for its headings and uses the document's outlines if they already exist. Primarily functions as a GUI class.
+
+<h5 id=main>main.py</h5>
+
+> **Main** is the bulk of the program, handling the user interface and calls to other functions.
+
+<h5 id=merging>merging.py</h5>
+
+> **Merging** handles the PDF merging calls from main.py. Primarily functions as a GUI class.
+
+<h5 id=rotating>rotating.py</h5>
+
+> **Rotating** handles PDF rotation as controlled by the user. Primarily functions as a GUI class.
+
+<h5 id=summarizer>summarizer.py</h5>
+
+> **Summarizer** parses the PDF and generates a summary using NLP methods. It also generates a number of graphs based on the extracted text.
+
+<br>
 
 <h2 id=future>Future Plans 🔮</h2>
 
@@ -95,9 +118,12 @@ Even though this project was created in a limited amount of time, there are some
 + Creating a functional GUI
 + Improving the Data Mining Features
 + Implementing more user-friendly features
++ Extracting images and data tables for easy access
 
-<h2 id=credits>Credits & Acknowledgements</h2>
-- ryan
-- tony
-- jon
-- prof
+<h2 id=credits>Credits 📜</h2>
+
+**This project was written by Ryan Truong, Tony Nguyen, and Jonathan Cole.**
+
+<br>
+
+<sub>This project was completed in fulfillment of the requirements of CSC 3400 at Belmont University. Special thank you to Dr. Esteban Parra Rodriguez.</sub>
