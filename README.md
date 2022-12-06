@@ -5,8 +5,8 @@
 
 <div>
   <h2 id="contents">Table of Contents</h2>
-    <span><a href=#quickstart>Quickstart ⏩</a></span>&emsp;
     <span><a href=#about>About 📖</a></span>&emsp;
+    <span><a href=#quickstart>Quickstart ⏩</a></span>&emsp;
     <span><a href=#dependencies>Dependencies 📦</a></span>&emsp;
     <span><a href=#installation>Installation ⚙️</a></span>&emsp;
     <span><a href=#features>Features 🪴</a></span>&emsp;
@@ -14,14 +14,42 @@
     <span><a href=#reader>Reader 📚</a></span>&emsp;
 </div>
 
-<h2 id=quickstart>Quickstart ⏩</h2>
-
+<br>
+<br>
 <h2 id=about>About 📖</h3>
 
 > Clippy takes a PDF and displays its contents, a summary, and its headings with a straightforward user interface.
 > The summaries are generated using tokenization, count vectorization, TF-IDF, and Multinomial NB classification.
 > The program also predicts the category of the given text
 > (see [summarizer.py](https://github.com/jwc524/CLIPPY/blob/master/reader/summarizer.py) for more information).
+
+<br>
+
+<h2 id=quickstart>Quickstart ⏩</h2>
+
+Using your preferred shell and the [Git CLI](https://cli.github.com/), the steps are as follows:
+
+<br>
+
+➊ Create and move to new directory.
+
+```
+mkdir clippy-clone
+```
+
+```
+cd clippy-clone
+```
+
+<br>
+
+➋ Clone repo using [Git CLI](https://cli.github.com/).
+
+```
+gh repo clone jwc524/clippy
+```
+
+<br>
 
 <h2 id=dependencies>Dependencies 📦 </h2>
 <ul>
@@ -39,13 +67,24 @@
   <li><a href=https://pypi.org/project/tkPDFViewer/ target="_blank" rel="noopener noreferrer">tkpdfviewer</li>
 </ul>
 
+<br>
+
 <h2 id=installation>Installation ⚙️ </h4>
 <p>To install each dependency, use the following structure</p>
+
 ```
 pip install <package>
 ```
-- basic functionality
-- how to use
+
+However, as mentioned in the [dependencies](#dependencies), pymupdf must be installed as such:
+
+```
+pip install pymupdf==1.18.17
+```
+
+<br>
+
+For help with repository cloning, refer to [Quickstart ⏩](#quickstart).
 
 <h2 id=features>Features 🪴 </h3>
 
