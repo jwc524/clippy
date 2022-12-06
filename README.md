@@ -14,7 +14,7 @@
 </ul>
 
 <br>
-<br>
+
 <h2 id=about>About 💡</h2>
 
 > We decided to tackle this project because as college students, most of us will spend much of our time reading an abundance of documents. Using the guidelines, we thought it would be appropriate to create a Smart PDF reader so that when given a pdf or txt file, we are able to use features that help us understand the document to its full effect.
