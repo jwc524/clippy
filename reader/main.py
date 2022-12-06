@@ -4,7 +4,7 @@ import tkinter
 from tkinter import *
 from tkinter import filedialog
 from tkPDFViewer import tkPDFViewer
-from summarizer import get_summary, get_extracted_text, common_words_graph
+from summarizer_beta import get_summary, get_extracted_text, common_words_graph
 from headings import find_headings
 from merging import merge_pdf
 from rotating import rotate_pdf
@@ -86,7 +86,7 @@ def open_files():
         heading_list = find_headings(main_file)
 
         top_window = tkinter.Toplevel(buttons)
-        top_window.geometry('+225+335')
+        top_window.geometry('+1373+215')
         pop_windows(top_window, heading_list)
 
     # creates a tkinter window for the rotated PDF
@@ -126,7 +126,7 @@ def open_files():
         data = [genre, score, p_summary]
 
         s_window = tkinter.Toplevel(buttons)
-        s_window.geometry('+900+100')
+        s_window.geometry('+615+50')
         pop_windows(s_window, data)
 
         text = get_extracted_text(path)
