@@ -86,6 +86,10 @@ However, as mentioned in the [dependencies](#dependencies), *pymupdf* must be in
 ```
 pip install pymupdf==1.18.17
 ```
+Alernatively:
+```
+py-3.10 -m pip install -U pymupdf==1.18.17
+```
 
 <br>
 
