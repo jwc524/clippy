@@ -142,6 +142,7 @@ Even though this project was created in a limited amount of time, there are some
 + Improving the Data Mining Features
 + Implementing more user-friendly features
 + Extracting images and data tables for easy access
++ Google Scholar API + JSTOR Integration
 
 <br>
 
